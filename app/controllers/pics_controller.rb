@@ -1,8 +1,9 @@
 class PicsController < ApplicationController
 
-	before_action :load_pic, only: [:show, :edit, :update]
+	before_action :load_pic, only: [:show, :edit, :update, :destroy]
 
 	def index
+		@pics = Pic.all.order("created_at DESC")
 	end
 
 	def new
@@ -11,18 +12,31 @@ class PicsController < ApplicationController
 
 	def create
 		@pic = Pic.new(pic_params)
+		if @pic.save
+			redirect_to @pic, notice: "The pic is posted!"
+		else
+			render :new
+		end
 	end
 
 	def show
+
 	end
 
 	def destroy
+		@pic.destroy
+		redirect_to root_path, :notice => "Pic deleted"
 	end
 
 	def edit
 	end
 
 	def update
+		if @pic.update_attributes(pic_params)
+			redirect_to @pic, :notice => "Pic is updated"
+		else
+			render :edit
+		end
 	end
 
 	private

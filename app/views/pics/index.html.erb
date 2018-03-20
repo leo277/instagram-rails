@@ -1,1 +1,5 @@
-PlaceHolder!
+<%= link_to "Gram it", new_pic_path, :class => "btn btn-lg btn-info" %>
+
+<% @pics.each do |pic| %>
+	<h2><%=link_to pic.title, pic%></h2>
+<% end %>
