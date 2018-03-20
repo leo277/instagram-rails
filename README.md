@@ -9,6 +9,9 @@ Things you may want to cover:
 
 * System dependencies
 
+	Install ImageMagick
+	see: https://github.com/thoughtbot/paperclip
+
 * Configuration
 
 * Database creation

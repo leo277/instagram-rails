@@ -17,6 +17,11 @@
 					</div>
 					<div class="col-md-6">
 						<div class="btn-group pull-right">
+							<%= link_to like_pic_path(@pic), method: :put, class:"btn btn-default" do %>
+								<span class="glyphicon glyphicon-thumbs-up">
+									<%= @pic.get_upvotes.size %>
+								</span>
+							<% end %>
 							<% if user_signed_in?%>
 								<%= link_to "Edit", edit_pic_path,class:"btn btn-info" %>
 								<%= link_to "Delete", pic_path, :method => :delete ,class:"btn btn-danger", :data=>{:confirm => "Are you sure?"}%>
